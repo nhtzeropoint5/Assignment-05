@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Tracker</title>
+
+  <!-- <link rel="stylesheet" href="style.css"> -->
+   <link rel="shortcut icon" href="data:,">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+  * {
+  font-family: "Geist", sans-serif;
+  /* color: #002C5C; */
+
+}
+
+</style>
+</head>
+
+<!-- flex flex-col align-middle justify-center -->
+<body class="min-h-screen bg-base-200 text-blue-950">
+
+
+    <header class="border-b-2 border-gray-200">
+    <div class="navbar bg-blue-50 shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a class=""><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+      <li><a class=""><i class="fa-solid fa-book-open"></i>Learn</a>
+      </li>
+      <li><a class=""><i class="fas fa-sign-out"></i>Logout</a></li>
+      </ul>
+    </div>
+    <!-- items-center  -->
+    <a class="flex items-center gap-1" href="">
+      <span class="text-lg font-bold">English</span>
+      <img src="./assets/logo.png" alt="">
+      <span class="font-bangla text-lg font-semibold">জানালা</span>
+    </a>
+  </div>
+  <div class="navbar-center">
+  </div>
+
+  <div class="navbar-end hidden lg:flex">
+    <ul class="menu menu-horizontal px-1  space-x-4 ">
+      <li><a class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+      <li><a class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a>
+      </li>
+      <li><a class="btn btn-outline btn-primary"><i class="fas fa-sign-out"></i>Logout</a></li>
+    </ul>
+  </div>
+</div>
+  </header>
+
+
+
+
+  <section id="Job-container" class ="text-center px-10 pt-1.5 pb-10 w-14/15 md:w-8/12 mx-auto">
+    <div class="flex justify-between">
+      <h1 class="text-2xl text-left font-bold my-7">Available Jobs</h1>
+      <span class="text-l text-left my-7"><span id="min-num">8</span><span id="txt-cng"> Jobs</span></span>
+    </div>
+  
+  <div class="flex flex-col gap-3 md:flex-row mx-auto max-w-4xl justify-start ">
+    <button id="home-page" class="btn btn-primary btn-soft btn-active" onclick="showOnly('card-container-home', 'home-page')">All</button>
+    <button id="interview-page" class="btn btn-primary btn-soft" onclick="showOnly('Job-container-int', 'interview-page')">Interview</button>
+    <button id="reject-page" class="btn btn-primary btn-soft" onclick="showOnly('Job-container-rej', 'reject-page')">Rejected</button>
+  </div>
+
+<div id="card-container-home" class="card-container borde mx-auto space-y-6 my-7 ">
+ 
+  <div id="card-8" class="card bg-base-100 shadow-sm">
+  
+ <div class="card-body text-left p-3 m-3">
+  <div class="flex"><p class="text-lg font-semibold">Mobile First Corp-7</p>
+ <button class="btn-dlt btn btn-soft"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+ 
+ <p class="text-gray-500 font-normal text-base mb-1">React Native Developer</p>
+ <p class="text-gray-500 font-normal text-base mb-1">Dhaka, Bangladesh</p>
+ <p class="text-gray-500 text-sm my-2">Remote
+ • 
+Full-time 
+•
+ $130,000 - $175,000</p>
+ <button class="btn btn-soft btn-primary w-[130px]">NOT APPLIED</button>
+ <p class="text-gray-700 my-2">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+ <div class="flex gap-4">
+ <button class="int-btn btn btn-outline btn-success w-[100px]" onclick="changeStyle()">INTERVIEW</button>
+ <button class="rej-btn btn btn-outline btn-error w-[100px]">REJECTED</button></div>
+
+ </div></div>
+
+</div>
+
+
+
+
+<div  id="Job-container-int" class="mx-auto space-y-6 my-7 hidden">
+ <div id="card-img-int" class="card bg-base-100 shadow-sm">
+ <div class="card-body text-left p-3 m-3">
+  <div class="text-center p-[30px] md:p-[100px] space-y-3">
+    <img class="mx-auto" src="./jobs.png" alt="">
+    <p class="text-lg font-semibold">No Jobs Available</p>
+    <p class="text-gray-500 font-normal text-base mb-1">come back soon for new opportunities</p>
+ </div>
+</div>
+</div>
+</div>
+
+
+
+<div  id="Job-container-rej" class="mx-auto space-y-6 my-7 hidden">
+
+
+ <div id="card-img-rej" class="card bg-base-100 shadow-sm">
+ <div class="card-body text-left p-3 m-3">
+  <div class="text-center p-[30px] md:p-[100px] space-y-3">
+    <img class="mx-auto" src="./jobs.png" alt="">
+    <p class="text-lg font-semibold">No Jobs Available</p>
+    <p class="text-gray-500 font-normal text-base mb-1">come back soon for new opportunities</p>
+     </div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+
+
+<!-- <section class ="text-center px-10 pt-1.5 pb-10 w-14/15 md:w-8/12 mx-auto">
+
+</section>
+
+
+<section class ="text-center px-10 pt-1.5 pb-10 w-14/15 md:w-8/12 mx-auto">
+
+
+</section> -->
+
+
+
+  
+  <!-- <div class="card w-96 bg-base-100 card-xs shadow-sm  mx-auto">
+  <div class="card-body">
+    <h2 class="card-title">Xsmall Card</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="justify-end card-actions">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div> -->
+
+
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
