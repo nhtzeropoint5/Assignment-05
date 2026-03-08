@@ -93,7 +93,7 @@
 
 <!-- <div class="bg-white w-full max-w-md mx-auto p-8 rounded-xl shadow-lg text-center"></div> -->
 
-  <section id="Job-container" class ="border text-center px-10 pt-1.5 pb-10 w-14/15 md:w-11/12 mx-auto my-15">
+  <section id="Job-container" class ="text-center px-10 pt-1.5 pb-10 w-14/15 md:w-11/12 mx-auto mt-15">
 
 <!-- this is to create the 3 buttons together   -->
   <div class=" bg-white rounded-xl p-8 shadow-sm flex flex-col gap-3 md:flex-row mx-auto justify-start ">
@@ -103,9 +103,8 @@
   </div>
 
 
-
 <!-- this is to create the job count and logo -->
-<div class=" bg-white rounded-t-xl p-8 shadow-sm mt-7">
+<div class=" bg-white rounded-t-xl p-8 shadow-sm mt-7 flex justify-between">
     <div class="flex space-x-4">
         <div class=" bg-blue-50 p-3 rounded-full"><img src="./assets/Aperture.png" alt=""></div>
         
@@ -114,10 +113,16 @@
             <p class="text-gray-500">Track and manage your project issues</p>
         </div>
     </div>
+        <div class="flex items-center gap-3">
+            <span class="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+            <span>Open</span>
+            <span class="inline-block w-3 h-3 bg-purple-500 rounded-full"></span>
+            <span>Close</span>
+        </div>
+</div>
 
 
 <!-- this is to create border     -->
-</div>
   <div class="flex items-center w-full">
   <div class="flex-grow border-t-2 border-gray-300"></div>
 </div>
@@ -157,12 +162,61 @@
 
 
 
- </div>
-</div>
-
 </section>
 
 
+<!-- modal html code -->
+   
+<button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="details-container" class="space-y-4">
+    <div class="">
+      <h2 class="text-2xl font-bold" >Fix Broken Image Uploads</h2>
+    </div>
+
+    <div class="flex justify-start items-center gap-3">
+    <button class="btn rounded-full btn-active btn-success">Opened</button>
+    <p class="text-sm text-gray-500">• Opened by Fahim Ahmed • 22/02/2026</p>
+    </div>
+   
+
+    <div class="flex gap-2">
+            <button class="btn btn-soft rounded-full border-error btn-error btn-sm"><i class="fa-solid fa-bug"></i>BUG</button>
+            <button class="btn btn-soft rounded-full border-warning btn-warning btn-sm"><i class="fa-solid fa-radiation"></i>HELP WANTED</button>
+        </div>
+
+    
+      <div class="space-y-2">
+        <p class="text-sm text-gray-500">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+    </div>
+
+   <div class="bg-slate-100 rounded-lg p-6 flex gap-20">
+
+    <div><span class="flex-1 text-gray-500">Assignee: </span><br>
+         <span class="text-black font-semibold">Fahim Ahmed</span>
+    </div>
+     <div class="flex-1"><span class="text-gray-500">Priority: </span><br>
+       <button class="btn px-5 py-1 text-white btn-active rounded-full border-error btn-error btn-sm">HIGH</button>
+    </div>
+      
+    </div>
+
+     </div>
+         <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-primary">Close</button>
+      </form>
+    </div>
+
+   </div> 
+</dialog>
+
+
+ </div>
+</div>
 
   
   <script src="script.js"></script>
