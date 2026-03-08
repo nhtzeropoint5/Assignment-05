@@ -35,8 +35,8 @@
 <body class="min-h-screen bg-base-200 text-blue-950">
 
 
-    <header class="border-b-2 border-gray-200">
-    <div class="navbar bg-blue-50 shadow-sm">
+    <header class="border-b-2 border-gray-200 bg-white">
+    <div class="navbar shadow-sm px-10 py-0">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -53,43 +53,77 @@
     </div>
     <!-- items-center  -->
     <a class="flex items-center gap-1" href="">
-      <span class="text-lg font-bold">English</span>
-      <img src="./assets/logo.png" alt="">
-      <span class="font-bangla text-lg font-semibold">জানালা</span>
+        <img class="scale-75"  src="./assets/github-logo.png" alt="">
+      <span class="text-2xl font-bold">GitHub Issues Tracker</span>
+      
     </a>
   </div>
   <div class="navbar-center">
+    
   </div>
 
-  <div class="navbar-end hidden lg:flex">
-    <ul class="menu menu-horizontal px-1  space-x-4 ">
-      <li><a class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
-      <li><a class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Learn</a>
-      </li>
-      <li><a class="btn btn-outline btn-primary"><i class="fas fa-sign-out"></i>Logout</a></li>
+  <div class="navbar-end hidden lg:flex ">
+  <div>
+  <div class="flex py-1">
+  <label class="input mx-auto">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </g>
+  </svg>
+  <input id="inp-src" type="search" required placeholder="Search issues..." />
+</label>
+</div>
+</div>
+
+    <ul class="menu menu-horizontal px-1 space-x-4 ">
+    <li><a class="btn btn-primary"><i class="fa-solid fa-plus"></i></i>New Issue</a></li>
     </ul>
   </div>
 </div>
   </header>
 
 
+<!-- <div class="bg-white w-full max-w-md mx-auto p-8 rounded-xl shadow-lg text-center"></div> -->
 
+  <section id="Job-container" class ="border text-center px-10 pt-1.5 pb-10 w-14/15 md:w-9/12 mx-auto my-15">
 
-  <section id="Job-container" class ="text-center px-10 pt-1.5 pb-10 w-14/15 md:w-8/12 mx-auto">
-    <div class="flex justify-between">
-      <h1 class="text-2xl text-left font-bold my-7">Available Jobs</h1>
-      <span class="text-l text-left my-7"><span id="min-num">8</span><span id="txt-cng"> Jobs</span></span>
-    </div>
   
-  <div class="flex flex-col gap-3 md:flex-row mx-auto max-w-4xl justify-start ">
+  <div class=" bg-white rounded-xl p-8 shadow-sm flex flex-col gap-3 md:flex-row mx-auto justify-start ">
     <button id="home-page" class="btn btn-primary btn-soft btn-active" onclick="showOnly('card-container-home', 'home-page')">All</button>
     <button id="interview-page" class="btn btn-primary btn-soft" onclick="showOnly('Job-container-int', 'interview-page')">Interview</button>
     <button id="reject-page" class="btn btn-primary btn-soft" onclick="showOnly('Job-container-rej', 'reject-page')">Rejected</button>
   </div>
 
-<div id="card-container-home" class="card-container borde mx-auto space-y-6 my-7 ">
+<div class=" bg-white rounded-t-xl p-8 shadow-sm mt-7">
+    <div class="flex space-x-4">
+        <div class=" bg-blue-50 p-3 rounded-full"><img src="./assets/Aperture.png" alt=""></div>
+        
+        <div class="text-start">
+            <h2 class="text-xl font-bold">50 issues</h2>
+            <p class="text-gray-500">Track and manage your project issues</p>
+        </div>
+    </div>
+
+</div>
+  <div class="flex items-center w-full">
+  <div class="flex-grow border-t-2 border-gray-300"></div>
+</div>
+<div class=" bg-white rounded-b-xl p-8 shadow-sm"></div>
+
+
+
+
+ <!-- <div id="card-container-home" class="card-container border mx-auto space-y-6 "> -->
  
-  <div id="card-8" class="card bg-base-100 shadow-sm">
+  <!-- <div id="card-8" class="card bg-base-100 shadow-sm">
   
  <div class="card-body text-left p-3 m-3">
   <div class="flex"><p class="text-lg font-semibold">Mobile First Corp-7</p>
@@ -108,14 +142,14 @@ Full-time
  <button class="int-btn btn btn-outline btn-success w-[100px]" onclick="changeStyle()">INTERVIEW</button>
  <button class="rej-btn btn btn-outline btn-error w-[100px]">REJECTED</button></div>
 
- </div></div>
+ </div></div> -->
 
-</div>
-
-
+<!-- </div>  -->
 
 
-<div  id="Job-container-int" class="mx-auto space-y-6 my-7 hidden">
+
+
+<!-- <div  id="Job-container-int" class="mx-auto space-y-6 my-7 hidden">
  <div id="card-img-int" class="card bg-base-100 shadow-sm">
  <div class="card-body text-left p-3 m-3">
   <div class="text-center p-[30px] md:p-[100px] space-y-3">
@@ -125,7 +159,7 @@ Full-time
  </div>
 </div>
 </div>
-</div>
+</div> -->
 
 
 
