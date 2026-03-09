@@ -30,11 +30,6 @@ function showOnly(id, id1){
 
     const txt = document.getElementById('txt-cng');
 
-    // const jobC = document.getElementById('tab-1');
-    // const intC = document.getElementById('tab-2');
-    // const rejC = document.getElementById('tab-3');
-
-
     home.classList.add('hidden');
     btn1.classList.remove('btn-active');
     op.classList.add('hidden');
@@ -45,19 +40,47 @@ function showOnly(id, id1){
     document.getElementById(id).classList.remove('hidden');// container hide 
     document.getElementById(id1).classList.add('btn-active'); // activate the btn
 
-
-    // if (id === 'card-container-home') {
-    //     txtN.innerText = jobC.innerText;
-    //     txt.innerText = " Jobs";
-    // }
-    if (id === 'Job-container-op') {
+    if (id === 'card-container-op') {
         txt.innerText = openCount;
     } 
-    else if (id === 'Job-container-rej') {
+    else if (id === 'card-container-cls') {
         txt.innerText = closedCount;
+    }
+    else if (id === 'card-container') {
+        txt.innerText = openCount + closedCount;
     }
 }
 
+
+function loadAllIssues() {
+  fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then(res => res.json())
+    .then(data => {
+      loadIssueCard(data.data);
+    });
+}
+
+
+document.getElementById("inp-src").addEventListener("input", function () {
+
+  const value = this.value.trim().toLowerCase();
+
+    if (value === "") {
+    loadAllIssues();
+    return;
+  }
+
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${value}`)
+    .then(res => res.json())
+    .then(data => {
+
+      const SearchIssues = data.data;
+
+      loadIssueCard(SearchIssues);
+
+    });
+
+});
 
 
 
@@ -85,7 +108,7 @@ const loadIssueCard = (dataset) => {
 
     if(dataset.length == 0){
         
-        cardConH.innerHTML = `<div id="no-btn" class="p-16 text-center space-y-6">
+        cardConH.innerHTML = `<div id="no-btn" class="p-16 text-center space-y-6 border col-span-4 bg-slate-300">
         <h1 class="text-3xl font-bangla">No Issues Found</h1>
         </div>`;
         manageSpinner(false);
@@ -98,7 +121,7 @@ const loadIssueCard = (dataset) => {
 
     const card = document.createElement('div');
     card.innerHTML = `
-    <div class="created-card min-h-[370px] text-left p-5 border-t-4 ${data.status == "open" ? "border-green-500": "border-purple-500"} space-y-5 shadow-lg rounded-xl" onclick="loadIssueDetails(${data.id})">
+    <div class="created-card min-h-[150px] md:min-h-[370px] text-left p-5 border-t-4 ${data.status == "open" ? "border-green-500": "border-purple-500"} space-y-5 shadow-lg rounded-xl" onclick="loadIssueDetails(${data.id})">
         <div class="flex justify-between align-middle">
             <div class="my-auto">
                 <img src="./assets/${data.status == "open" ? "Open-Status.png": "Closed-Status.png"}" alt="">
@@ -116,12 +139,12 @@ const loadIssueCard = (dataset) => {
             </div>`}
             
         </div>
-         <div class = "min-h-[130px]">
+         <div class = "min-h-[60px] md:min-h-[130px]">
         <p class="text-black font-semibold text-lg mb-1">${data.title}</p>
         <p class="text-gray-500 text-sm my-2">${data.description}</p></div>
     
     
-        <div class="flex gap-2">
+        <div class="flex gap-2 flex-col md:flex-row">
             ${createElements(data.labels)}
         </div>
     
@@ -228,4 +251,7 @@ detbox.innerHTML = `
 
 
 loadIssues();
+
+
+
 
