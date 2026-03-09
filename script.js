@@ -1,3 +1,6 @@
+let openCount = 0;
+let closedCount = 0;
+
 const manageSpinner = (st) =>{
   if(st==true){
   document.getElementById('spin').classList.remove('hidden');
@@ -16,6 +19,44 @@ const createElements = (arr) => {
 }
 
 
+function showOnly(id, id1){
+    const home = document.getElementById('card-container'); // getting id's of the containers
+    const op = document.getElementById('card-container-op');
+    const cls = document.getElementById('card-container-cls');
+
+    const btn1 = document.getElementById('home-page'); // getting id's of the all other buttons
+    const btn2 = document.getElementById('op-page');
+    const btn3 = document.getElementById('cls-page');
+
+    const txt = document.getElementById('txt-cng');
+
+    // const jobC = document.getElementById('tab-1');
+    // const intC = document.getElementById('tab-2');
+    // const rejC = document.getElementById('tab-3');
+
+
+    home.classList.add('hidden');
+    btn1.classList.remove('btn-active');
+    op.classList.add('hidden');
+    btn2.classList.remove('btn-active');
+    cls.classList.add('hidden');
+    btn3.classList.remove('btn-active');
+
+    document.getElementById(id).classList.remove('hidden');// container hide 
+    document.getElementById(id1).classList.add('btn-active'); // activate the btn
+
+
+    // if (id === 'card-container-home') {
+    //     txtN.innerText = jobC.innerText;
+    //     txt.innerText = " Jobs";
+    // }
+    if (id === 'Job-container-op') {
+        txt.innerText = openCount;
+    } 
+    else if (id === 'Job-container-rej') {
+        txt.innerText = closedCount;
+    }
+}
 
 
 
@@ -26,22 +67,25 @@ const loadIssues = () => {
         fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then(response => response.json())
         .then(data => loadIssueCard(data.data));
+       
 
 };
-
-
 
 
 
 // step-2
 const loadIssueCard = (dataset) => {
 
-    const cardCon = document.getElementById('card-container');
-    cardCon.innerHTML=``;
+    const cardConH = document.getElementById('card-container');
+    const cardConO = document.getElementById('card-container-op');
+    const cardConC = document.getElementById('card-container-cls');
+    openCount = dataset.filter(i => i.status === "open").length;
+    closedCount = dataset.filter(i => i.status === "closed").length;
+    cardConH.innerHTML=``;
 
     if(dataset.length == 0){
         
-        cardCon.innerHTML = `<div id="no-btn" class="p-16 text-center space-y-6">
+        cardConH.innerHTML = `<div id="no-btn" class="p-16 text-center space-y-6">
         <h1 class="text-3xl font-bangla">No Issues Found</h1>
         </div>`;
         manageSpinner(false);
@@ -90,7 +134,13 @@ const loadIssueCard = (dataset) => {
 
     // console.log(card);
 
-    cardCon.appendChild(card);
+    cardConH.appendChild(card);
+
+        if (data.status === "open") {
+        cardConO.appendChild(card.cloneNode(true));
+    } else {
+        cardConC.appendChild(card.cloneNode(true));
+    }
     });
 
     manageSpinner(false);
@@ -177,100 +227,5 @@ detbox.innerHTML = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const removeActive = () => {
-//   const arr = document.querySelectorAll(".lsn-btn");
-
-//   for (let ar of arr) {
-//     ar.classList.remove('active');
-//   }
-// }
-
-// // display json er function er kach theke onclick korle invoke hochhe , input nichhe level number k
-
-// const loadLevelWord = (id) => {
-  
-//     manageSpinner(true);
-//     const url = `https://openapi.programming-hero.com/api/level/${id}`;
-//     fetch(url).then(res => res.json()).then(data => {
-//         displayLevelWord(data.data);
-//         removeActive();
-//         const something = document.getElementById(`lsn-${id}`);
-//         something.classList.add("active");
-//     });
-
-// }
-
-
-
-// per level er jonno word fetch kore ene card format e show kortese
-
-
-
-//  eikhane buttons gula load kortesi, shathe onclick function jure dichhi jeikhane button er id jachhe parameter hishebe
-
-// const displayJSON = (posts) => {
-
-// const x = document.getElementById('div1');
-// x.innerHTML=``;
-
-
-// posts.forEach(element => {
-//     const newElement = document.createElement("button");
-//     newElement.id = `lsn-${element.level_no}`;
-//     newElement.classList.add("btn", "btn-outline", "btn-primary", "lsn-btn");
-
-//     newElement.onclick = () => {loadLevelWord(element.level_no);}
-
-//     newElement.innerHTML = `<i class="fa-solid fa-book-open"></i>Lesson-${element.level_no}`;
-//     x.appendChild(newElement);
-    
-// });
-
-// }
-
-
-
 loadIssues();
 
-// document.getElementById("inp-src").addEventListener("input", function () {
-
-//   const value = this.value.trim().toLowerCase();
-
-//   console.log(value);
-//   fetch('https://openapi.programming-hero.com/api/words/all').
-//   then(res => res.json()).then(data => {
-//     const allWords = data.data;
-//     const filtered = allWords.filter(word =>
-//     word.word && word.word.toLowerCase().includes(value));
-
-//     displayLevelWord(filtered);
-//   });
-
-
-
-// });

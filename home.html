@@ -98,9 +98,9 @@
 
 <!-- this is to create the 3 buttons together   -->
   <div class=" bg-white rounded-xl p-8 shadow-sm flex flex-col gap-3 md:flex-row mx-auto justify-start ">
-    <button id="home-page" class="btn btn-primary btn-soft btn-active" onclick="showOnly('card-container-home', 'home-page')">All</button>
-    <button id="interview-page" class="btn btn-primary btn-soft" onclick="showOnly('Job-container-int', 'interview-page')">Interview</button>
-    <button id="reject-page" class="btn btn-primary btn-soft" onclick="showOnly('Job-container-rej', 'reject-page')">Rejected</button>
+    <button id="home-page" class="act-btn btn btn-primary btn-soft btn-active" onclick="showOnly('card-container', 'home-page')">All</button>
+    <button id="op-page" class="act-btn btn btn-primary btn-soft" onclick="showOnly('card-container-op', 'op-page')">Open</button>
+    <button id="cls-page" class="act-btn btn btn-primary btn-soft" onclick="showOnly('card-container-cls', 'cls-page')">Closed</button>
   </div>
 
 
@@ -110,7 +110,7 @@
         <div class=" bg-blue-50 p-3 rounded-full"><img src="./assets/Aperture.png" alt=""></div>
         
         <div class="text-start">
-            <h2 class="text-xl font-bold">50 issues</h2>
+            <h2 class="text-xl font-bold"> <span id="txt-cng"> 50</span> issues</h2>
             <p class="text-gray-500">Track and manage your project issues</p>
         </div>
     </div>
@@ -137,9 +137,9 @@
 
 
 
-<!-- card html code     -->
+ <!-- card html code     -->
 
-<!-- <div class="created-card text-left p-5 border-t-4 border-green-500 space-y-5 shadow-lg rounded-xl">
+ <div class="created-card text-left p-5 border-t-4 border-green-500 space-y-5 shadow-lg rounded-xl">
         <div class="flex justify-between align-middle">
             <div class="my-auto">
                 <img src="./assets/Open-Status.png" alt="">
@@ -163,9 +163,12 @@
             <p>#1 by Bob</p>
             <p>09/03/26</p>
         </div>
-</div> -->
+</div> 
 
+</div>
 
+<div id="card-container-op" class="hidden bg-white rounded-b-xl p-8 shadow-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+<div id="card-container-cls" class="hidden bg-white rounded-b-xl p-8 shadow-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"></div>
 
 </section>
 
